@@ -3,6 +3,7 @@
   "messages": {
     "appmenu": {
       "items": {
+        "ExternalLink": "",
         "DxfExport": "Export DXF",
         "Help": "Ajutor",
         "LayerTree": "Straturi & Legendă",
@@ -16,10 +17,19 @@
         "Redlining": "Evidențiere",
         "Editing": "Editare",
         "Login": "Conectează-te",
-        "Logout": "Deconectează-te",
-        "ExternalLink": ""
+        "Logout": "Deconectează-te"
       },
       "menulabel": "Hărți & Unelte"
+    },
+    "search": {
+      "coordinates": "",
+      "more": "Mai multe...",
+      "search": "Caută",
+      "searchall": "Caută în toate",
+      "all": "Toate",
+      "themes": "Hărți tematice",
+      "invisiblelayer": "",
+      "enablelayer": ""
     },
     "bgswitcher": {
       "nobg": "Fără fundal"
@@ -72,10 +82,12 @@
     },
     "importlayer": {
       "addlayer": "Adaugă strat",
-      "filter": "Filtrare",
       "connect": "Conectare",
+      "filter": "Filtrare",
+      "localfile": "",
       "nofeatures": "Nu s-a putut importa nicio entitate",
       "noresults": "Fără rezultat sau URL invalid",
+      "url": "",
       "urlplaceholder": "Introdu URL către WMS, WFS, KML..."
     },
     "layerinfo": {
@@ -92,7 +104,7 @@
       "importlayer": "Import strat",
       "maptip": "Arată indicii hartă",
       "printlegend": "Tipărește legenda",
-      "transparency": "Transparență"
+      "deletealllayers": ""
     },
     "locate": {
       "metersUnit": "metri",
@@ -161,15 +173,6 @@
       "size": "Mărime",
       "text": "Text",
       "width": "Lățime"
-    },
-    "search": {
-      "more": "Mai multe...",
-      "search": "Caută",
-      "searchall": "Caută în toate",
-      "all": "Toate",
-      "themes": "Hărți tematice",
-      "invisiblelayer": "",
-      "enablelayer": ""
     },
     "share": {
       "directLinkTitle": "Via link direct",

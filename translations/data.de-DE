@@ -3,6 +3,7 @@
   "messages": {
     "appmenu": {
       "items": {
+        "ExternalLink": "Externer Link",
         "DxfExport": "DXF-Export",
         "Help": "Hilfe",
         "LayerTree": "Ebenen und Legende",
@@ -16,10 +17,19 @@
         "Redlining": "Zeichnen",
         "Editing": "Editieren",
         "Login": "Anmelden",
-        "Logout": "Abmelden",
-        "ExternalLink": "Externer Link"
+        "Logout": "Abmelden"
       },
       "menulabel": "Karte & Werkzeuge"
+    },
+    "search": {
+      "coordinates": "Koordinaten",
+      "more": "Mehr...",
+      "search": "Suchen",
+      "searchall": "Ort suchen oder Karte hinzufügen...",
+      "all": "Alle",
+      "themes": "Themen",
+      "invisiblelayer": "Das Resultat liegt auf einer Ebene, die ausgeschaltet ist.",
+      "enablelayer": "Ebene einschalten"
     },
     "bgswitcher": {
       "nobg": "Kein Hintergrund"
@@ -72,10 +82,12 @@
     },
     "importlayer": {
       "addlayer": "Ebene hinzufügen",
-      "filter": "Filter...",
       "connect": "Verbinden",
+      "filter": "Filter...",
+      "localfile": "Lokale Datei",
       "nofeatures": "Keine Objekte konnten importiert werden",
       "noresults": "Keine Resultate oder ungültige URL",
+      "url": "URL",
       "urlplaceholder": "WMS, WFS oder KML URL eingeben..."
     },
     "layerinfo": {
@@ -92,7 +104,7 @@
       "importlayer": "Ebene importieren",
       "maptip": "Kartentipps anzeigen",
       "printlegend": "Legende drucken",
-      "transparency": "Transparenz"
+      "deletealllayers": "Alle Ebenen entfernen"
     },
     "locate": {
       "metersUnit": "Meter",
@@ -103,7 +115,7 @@
         "LOCATING": "Position: wird bestimmt...",
         "ENABLED": "Position: aktiviert",
         "FOLLOWING": "Position: mit GPS bewegen",
-        "PERMISSION_DENIED": "Position: zugriff verweigert"
+        "PERMISSION_DENIED": "Position: Zugriff verweigert"
       }
     },
     "map": {
@@ -161,15 +173,6 @@
       "size": "Grösse",
       "text": "Text",
       "width": "Breite"
-    },
-    "search": {
-      "more": "Mehr...",
-      "search": "Suchen",
-      "searchall": "Ort suchen oder Karte hinzufügen...",
-      "all": "Alle",
-      "themes": "Themen",
-      "invisiblelayer": "Das Resultat liegt auf einer Ebene, die ausgeschaltet ist.",
-      "enablelayer": "Ebene einschalten"
     },
     "share": {
       "directLinkTitle": "Über einen direkten Link",

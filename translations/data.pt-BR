@@ -3,6 +3,7 @@
   "messages": {
     "appmenu": {
       "items": {
+        "ExternalLink": "",
         "DxfExport": "Exportar DXF",
         "Help": "Ajuda",
         "LayerTree": "Camadas & Legenda",
@@ -16,10 +17,19 @@
         "Redlining": "Desenhar",
         "Editing": "Editando",
         "Login": "",
-        "Logout": "",
-        "ExternalLink": ""
+        "Logout": ""
       },
       "menulabel": "Mapa & Ferramentas"
+    },
+    "search": {
+      "coordinates": "",
+      "more": "Mais...",
+      "search": "Buscar",
+      "searchall": "",
+      "all": "Tudo",
+      "themes": "",
+      "invisiblelayer": "",
+      "enablelayer": ""
     },
     "bgswitcher": {
       "nobg": "Sem plano de fundo"
@@ -72,10 +82,12 @@
     },
     "importlayer": {
       "addlayer": "Adicionar camada",
-      "filter": "Filtrar...",
       "connect": "Conectar",
+      "filter": "Filtrar...",
+      "localfile": "",
       "nofeatures": "Nenhum elemento pôde ser importado.",
       "noresults": "",
+      "url": "",
       "urlplaceholder": "Informe URL para WMS, WFS, KML..."
     },
     "layerinfo": {
@@ -92,7 +104,7 @@
       "importlayer": "Importar camada",
       "maptip": "Mostrar dicas de mapas de camadas",
       "printlegend": "Imprimir legenda",
-      "transparency": "Transparência"
+      "deletealllayers": ""
     },
     "locate": {
       "metersUnit": "metros",
@@ -161,15 +173,6 @@
       "size": "Tamanho",
       "text": "Texto",
       "width": "Largura"
-    },
-    "search": {
-      "more": "Mais...",
-      "search": "Buscar",
-      "searchall": "",
-      "all": "Tudo",
-      "themes": "",
-      "invisiblelayer": "",
-      "enablelayer": ""
     },
     "share": {
       "directLinkTitle": "Link direto",

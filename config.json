@@ -12,7 +12,8 @@
   "preserveBackgroundOnThemeSwitch": true,
   "preserveNonThemeLayersOnThemeSwitch": true,
   "allowReorderingLayers": true,
-  "allowRemovingThemeLayers": false,
+  "preventSplittingGroupsWhenReordering": true,
+  "allowRemovingThemeLayers": true,
   "searchThemes": true,
   "allowAddingOtherThemes": true,
   "allowFractionalZoom": true,
@@ -333,7 +334,8 @@
             "grayUnchecked": false,
             "flattenGroups": false,
             "layerInfoWindowSize": {"width": 480, "height": 400},
-            "bboxDependentLegend": false
+            "bboxDependentLegend": false,
+            "showToggleAllLayersCheckbox": true
           }
         },
         {

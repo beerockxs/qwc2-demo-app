@@ -3,6 +3,7 @@
   "messages": {
     "appmenu": {
       "items": {
+        "ExternalLink": "Link esterno",
         "DxfExport": "Esporta a DXF",
         "Help": "Aiuto",
         "LayerTree": "Livelli",
@@ -16,10 +17,19 @@
         "Redlining": "Redlining",
         "Editing": "Edita",
         "Login": "Accedi",
-        "Logout": "Disconnetti",
-        "ExternalLink": "Link esterno"
+        "Logout": "Disconnetti"
       },
       "menulabel": "Mappa e strumenti"
+    },
+    "search": {
+      "coordinates": "Coordinate",
+      "more": "Più risultati",
+      "search": "Cerca",
+      "searchall": "Cerca località o aggiungi cartine...",
+      "all": "Tutti",
+      "themes": "Temi",
+      "invisiblelayer": "Il risultato si trova su un layer che non è visibile.",
+      "enablelayer": "Attivare il layer"
     },
     "bgswitcher": {
       "nobg": "Nessuno sfondo"
@@ -72,10 +82,12 @@
     },
     "importlayer": {
       "addlayer": "Aggiungi livello",
-      "filter": "Filtro",
       "connect": "Connetti",
+      "filter": "Filtro",
+      "localfile": "File locale",
       "nofeatures": "Nessuno oggetto è stato importato",
       "noresults": "Nessun risultato o URL invalido",
+      "url": "URL",
       "urlplaceholder": "Indirizzo WMS, WFS KML..."
     },
     "layerinfo": {
@@ -92,7 +104,7 @@
       "importlayer": "Importa livello",
       "maptip": "Attiva maptip",
       "printlegend": "Stampa legenda",
-      "transparency": "Trasparenza"
+      "deletealllayers": "Rimuovi tutti i livelli"
     },
     "locate": {
       "metersUnit": "metri",
@@ -161,15 +173,6 @@
       "size": "Dimensione",
       "text": "Testo",
       "width": "Larghezza"
-    },
-    "search": {
-      "more": "Più risultati",
-      "search": "Cerca",
-      "searchall": "Cerca località o aggiungi cartine...",
-      "all": "Tutti",
-      "themes": "Temi",
-      "invisiblelayer": "Il risultato si trova su un layer che non è visibile.",
-      "enablelayer": "Attivare il layer"
     },
     "share": {
       "directLinkTitle": "Link diretto",

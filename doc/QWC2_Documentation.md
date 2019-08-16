@@ -114,19 +114,31 @@ Some external services can be used to enhance the application. Sample services a
 |`assetsPath`                         | Path from the webserver root to the `assets` folder.                                |
 |`urlPositionFormat`                  | How to encode the current map extent in the URL, either `centerAndZoom` or `extent`. See [URL parameters](#url-parameters) for details. |
 |`urlPositionCrs`                     | The CRS used to encode the current map extent coordinates in the URL.               |
-|`preserveExtentOnThemeSwitch`        | Whether to preserve the current map extent when switching theme, if possible.       |
-|`preserveBackgroundOnThemeSwitch`    | Whether to preserve the current background layer when switching theme, if possible. |
-|`preserveNonThemeLayersOnThemeSwitch`| Whether to preserve non-theme layers when switching theme.                          |
-|`allowReorderingLayers`              | Whether to allow re-ordering layers in the layer tree.                              |
-|`allowRemovingThemeLayers`           | Whether to allow removing any theme layers from the layer tree.                     |
 |`defaultFeatureStyle`                | The default style to use for selection geometries and other unstyled features.      |
 |`projections`                        | A list of additional projections to register, in the format `{"code": "<code>", "proj": "<proj4def>", "label": "<label>"}`. |
-|`searchThemes`                       | Whether allow searching for themes from the global search field.                    |
-|`allowAddingOtherThemes`             | Whether to allow adding another theme to a currently loaded theme.                  |
 |`allowFractionalZoom`                | Whether to allow arbitrary scales for viewing the map.                              |
 |`localeAwareNumbers`                 | Whether to use locale aware numbers throughout.                                     |
 |`wmsDpi`                             | The DPI to pass to the WMS requests.                                                |
 |`wmsHidpi`                           | Whether to honour the device pixel ratio for WMS GetMap requests.                   |
+
+*Global settings, overridable per theme*:<a name="config-json-overridable"></a>
+
+The following options can be specified globally, and also overriden per theme, see [`themesConfig.json`](#themesConfig-json).
+
+| Setting                              | Description |
+|--------------------------------------|-------------|
+|`preserveExtentOnThemeSwitch`         | Whether to preserve the current map extent when switching theme, if possible.       |
+|`preserveBackgroundOnThemeSwitch`     | Whether to preserve the current background layer when switching theme, if possible. |
+|`preserveNonThemeLayersOnThemeSwitch` | Whether to preserve non-theme layers when switching theme.                          |
+|`allowReorderingLayers`               | Whether to allow re-ordering layers in the layer tree.                              |
+|`preventSplittingGroupsWhenReordering`| Whether to prevent splitting sibling groups or the group itself when reordering items. |
+|`allowRemovingThemeLayers`            | Whether to allow removing any theme layers from the layer tree.                     |
+|`searchThemes`                        | Whether allow searching for themes from the global search field.                    |
+|`allowAddingOtherThemes`              | Whether to allow adding another theme to a currently loaded theme.                  |
+|`disableImportingLocalLayers`         | Whether to hide the option to import local layers from the layer tree.              |
+|`importLayerUrlPresets`               | A list of predefined URLs from which the user can choose when importing layers from the layer tree. |
+
+*Note*: The layer tree supports re-ordering layers via drag-and-drop if `allowReorderingLayers = true` *and either* `preventSplittingGroupsWhenReordering = true` *or* `flattenGroups = true` in the `LayerTree` plugin configuration.
 
 *Plugin configuration*:
 The plugin configuration is entered separately for desktop and for mobile mode. Refer to the [sample `config.json`](https://github.com/qgis/qwc2-demo-app/blob/master/config.json) for a list of available configuration options. You can omit a plugin entry to disable it in desktop and/or mobile mode. To completely remove a plugin from the compiled application, remove the corresponding entry in `js/appConfig.js`.
@@ -259,12 +271,14 @@ The format of the theme definitions is as follows:
 | `},`                                          |                                                                                  |
 | `"collapseLayerGroupsBelowLevel": <level>,`   | Optional, layer tree level below which to initially collapse groups. By default the tree is completely expanded. |
 | `"skipEmptyFeatureAttributes": <boolean>,`    | Optional, whether to skip empty attributes in the identify results. Default is `false`. |
-| `"allowReorderingLayers": <boolean>,`         | Optional, whether to allow reordering layers for this theme. Overrides the setting in `config.json`. |
-| `"mapTips":  <boolean>\|null,`                | Optional, per-theme setting whether map-tips are unavailable (`null`), disabled by default (`false`) or enabled by default (`true`). If missing or `undefined`, the setting in `config.json` is honoured. |
+| `"mapTips":  <boolean>\|null,`                | Optional, per-theme setting whether map-tips are unavailable (`null`), disabled by default (`false`) or enabled by default (`true`). |
 | `"extraLegendParameters": "<&KEY=VALUE>",`    | Optional, additional query parameters to append to WMS GetLegendGraphic.         |
 | `"printLabelBlacklist":  ["<LabelId>", ...]`  | Optional, list of composer label ids to not expose in the print dialog. |
-|
 | `"editConfig": "<editConfig.json>"`           | Optional, path to a filename containing the editing configuration for the theme, see [EditingInterface.js](#editing-interface). |
+| `"config": {`                                 | Optional, per-theme configuration entries which override the global entries in `config.json`.|
+| `  "allowRemovingThemeLayers": <boolean>`     | See [`config.json`](#config-json-overrideable) for which settings can be specified here. |
+| `  ...`                                       |                                                                                  |
+| `}`                                           |
 
 The format of the background layer definitions is as follows:
 
@@ -274,6 +288,7 @@ The format of the background layer definitions is as follows:
 | `"title": "<Title>",       ` | The title of the background layer, as displayed in the background switcher.       |
 | `"thumbnail": "<Filename>",` | Optional, image file in `assets/img/mapthumbs`. Defaults to `default.jpg`.        |
 | `"type": "<Type>",`          | The background layer type, i.e. `wms` or `wmts`.                                  |
+| `"group":  "<GroupId>",`     | Optional, a group ID string. Background layers with the same group ID will be grouped together in the background switcher. |
 | `<Layer params>`             | Parameters according to the specified layer type. Refer to the [sample `themesConfig.json`](https://github.com/qgis/qwc2-demo-app/blob/master/themesConfig.json) for some examples. |
 
 #### Generating `themes.json`
@@ -371,6 +386,7 @@ The following options are available for customizing the appearance of the QWC2 a
 - Modifying the legend print template in `assets/templates/legendprint.html`. The only requirement for this template is that is must contain a `<div id="legendcontainer"></div>` element.
 - Modifying the custom Help component `js/Help.jsx`.
 
+*Note*: The common application icons are located in `qwc2/icons`. They can be overridden by creating an icon with the same filename in the application specific `icons` folder.
 *Note*: The icons in the `icons` folder are compiled into an icon font. Currently, the icons need to be black content on transparent background, and all drawings (including texts) must be converted to paths for the icons to render correctly.
 
 
@@ -401,13 +417,25 @@ To ensure browser use a proper filename, the following options exist:
 The following parameters can appear in the URL of the QWC2 application:
 
 - `t`: The active theme
-- `l`: The visible layers in the map
+- `l`: The layers in the map, see below.
 - `bl`: The visible background layer
 - `st`: The search text
 - `e`: The visible extent
 - `c`: The center of the visible extent
 - `s`: The current scale
 - `crs`: The CRS of extent/center coordinates
+
+The `l` parameter lists all layers in the map (except redlining layers) as a comma separated list of entries of the form
+
+    <layername>[<transparency>]!
+
+where
+- `layername` is the WMS layer name of a theme layer, or a string of the format
+
+      <wms|wfs>:<service_url>#<layername>
+   for external layers, i.e. `wms:https://wms.geo.admin.ch/?#ch.are.bauzonen`.
+- `<transparency>` denotes the layer transparency, betwen 0 and 100. If the `[<transparency>]` portion is omitted, the layer is fully opaque.
+- `!` denotes that the layer is invisible. If omitted, the layer is visible.
 
 The `urlPositionFormat` parameter in `config.json` determines whether the extent or the center and scale appears in the URL.
 

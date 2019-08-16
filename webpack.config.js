@@ -1,8 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
 const os = require('os');
-const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
 const styleConfig = require("./styleConfig");
 
 const nodeEnv = process.env.NODE_ENV || 'development';
@@ -27,19 +25,7 @@ const plugins = [
   })
 ];
 
-if (isProd) {
-  plugins.push(new LodashModuleReplacementPlugin());
-  plugins.push(new TerserPlugin({
-    parallel: true,
-    sourceMap: true,
-    terserOptions: {
-      ecma: 8,
-      output: {
-        comments: false
-      }
-    }
-  }));
-} else {
+if (!isProd) {
   plugins.push(new webpack.HotModuleReplacementPlugin());
 }
 
@@ -58,7 +44,7 @@ module.exports = {
   },
   plugins,
   resolve: {
-    extensions: [".js", ".jsx"],
+    extensions: [".mjs", ".js", ".jsx"],
     symlinks: false
   },
   module: {
@@ -91,6 +77,10 @@ module.exports = {
             loader: 'babel-loader',
             options: { babelrcRoots: ['.', path.resolve(__dirname, 'node_modules', 'qwc2')] }
         }
+      },
+      {
+        test: /\.mjs$/,
+        type: 'javascript/auto',
       }
     ]
   },

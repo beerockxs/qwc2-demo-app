@@ -3,6 +3,7 @@
   "messages": {
     "appmenu": {
       "items": {
+        "ExternalLink": "External Link",
         "DxfExport": "DXF Export",
         "Help": "Help",
         "LayerTree": "Layers & Legend",
@@ -16,10 +17,19 @@
         "Redlining": "Redlining",
         "Editing": "Editing",
         "Login": "Login",
-        "Logout": "Logout",
-        "ExternalLink": "External Link"
+        "Logout": "Logout"
       },
       "menulabel": "Map & Tools"
+    },
+    "search": {
+      "coordinates": "Coordinates",
+      "more": "More...",
+      "search": "Search",
+      "searchall": "Search places or add maps...",
+      "all": "All",
+      "themes": "Themes",
+      "invisiblelayer": "The result lies on a layer which is not visible.",
+      "enablelayer": "Enable layer"
     },
     "bgswitcher": {
       "nobg": "No background"
@@ -72,10 +82,12 @@
     },
     "importlayer": {
       "addlayer": "Add layer",
-      "filter": "Filter...",
       "connect": "Connect",
+      "filter": "Filter...",
+      "localfile": "Local file",
       "nofeatures": "No features could be imported.",
       "noresults": "No results or invalid URL",
+      "url": "URL",
       "urlplaceholder": "Enter URL to WMS, WFS, KML..."
     },
     "layerinfo": {
@@ -92,7 +104,7 @@
       "importlayer": "Import layer",
       "maptip": "Show layer map tips",
       "printlegend": "Print legend",
-      "transparency": "Transparency"
+      "deletealllayers": "Remove all layers"
     },
     "locate": {
       "metersUnit": "meters",
@@ -161,15 +173,6 @@
       "size": "Size",
       "text": "Text",
       "width": "Width"
-    },
-    "search": {
-      "more": "More...",
-      "search": "Search",
-      "searchall": "Search places or add maps...",
-      "all": "All",
-      "themes": "Themes",
-      "invisiblelayer": "The result lies on a layer which is not visible.",
-      "enablelayer": "Enable layer"
     },
     "share": {
       "directLinkTitle": "Via a direct link",

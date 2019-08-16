@@ -3,6 +3,7 @@
   "messages": {
     "appmenu": {
       "items": {
+        "ExternalLink": "",
         "DxfExport": "Экспорт в DXF",
         "Help": "Помощь",
         "LayerTree": "Слои и легенда",
@@ -16,10 +17,19 @@
         "Redlining": "Обводка",
         "Editing": "Правка",
         "Login": "",
-        "Logout": "",
-        "ExternalLink": ""
+        "Logout": ""
       },
       "menulabel": "Карта и инструменты"
+    },
+    "search": {
+      "coordinates": "",
+      "more": "Больше...",
+      "search": "Поиск",
+      "searchall": "",
+      "all": "Всё",
+      "themes": "",
+      "invisiblelayer": "",
+      "enablelayer": ""
     },
     "bgswitcher": {
       "nobg": "Фон отсутствует"
@@ -72,10 +82,12 @@
     },
     "importlayer": {
       "addlayer": "Добавить слой",
-      "filter": "Фильтровать...",
       "connect": "Подключиться",
+      "filter": "Фильтровать...",
+      "localfile": "",
       "nofeatures": "Нет объектов, доступных для импорта",
       "noresults": "",
+      "url": "",
       "urlplaceholder": "Введите URL для WMS, WFS, KML..."
     },
     "layerinfo": {
@@ -92,7 +104,7 @@
       "importlayer": "Импортировать слой",
       "maptip": "Показывать подписи",
       "printlegend": "Распечатать легенду",
-      "transparency": "Прозрачность"
+      "deletealllayers": ""
     },
     "locate": {
       "metersUnit": "метров",
@@ -161,15 +173,6 @@
       "size": "Размер",
       "text": "Текст",
       "width": "Ширина"
-    },
-    "search": {
-      "more": "Больше...",
-      "search": "Поиск",
-      "searchall": "",
-      "all": "Всё",
-      "themes": "",
-      "invisiblelayer": "",
-      "enablelayer": ""
     },
     "share": {
       "directLinkTitle": "По прямой ссылке",
