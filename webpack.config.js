@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
+const TerserPlugin = require('terser-webpack-plugin');
 const os = require('os');
 const styleConfig = require("./styleConfig");
 
@@ -13,16 +14,8 @@ const plugins = [
   new webpack.DefinePlugin({
     'process.env': { NODE_ENV: JSON.stringify(nodeEnv) }
   }),
-  new webpack.NamedModulesPlugin(),
-  new webpack.DefinePlugin({
-    "__DEVTOOLS__": !isProd
-  }),
   new webpack.NormalModuleReplacementPlugin(/openlayers$/, path.join(__dirname, "qwc2", "libs", "openlayers")),
-  new webpack.NoEmitOnErrorsPlugin(),
-  new webpack.LoaderOptionsPlugin({
-      debug: !isProd,
-      minimize: isProd
-  })
+  new webpack.NoEmitOnErrorsPlugin()
 ];
 
 if (!isProd) {
@@ -31,7 +24,7 @@ if (!isProd) {
 
 module.exports = {
   devtool: isProd ? 'source-map' : 'eval',
-  mode: nodeEnv === "production" ? "production" : "development",
+  mode: isProd ? "production" : "development",
   entry: {
     'webpack-dev-server': 'webpack-dev-server/client?http://0.0.0.0:8081',
     'webpack': 'webpack/hot/only-dev-server',
@@ -68,8 +61,25 @@ module.exports = {
           {loader: 'string-replace-loader', options: {multiple: styleReplacements}}
         ]
       },
-      { test: /\.(ttf|eot|svg)(\?v=[0-9].[0-9].[0-9])?$/, loader: 'file-loader', query: {name: '[name].[ext]'} },
-      { test: /\.(png|jpg|gif)$/, loader: 'url-loader', query: {name: '[path][name].[ext]', limit: 8192} }, // inline base64 URLs for <=8k images, direct URLs for the rest
+      {
+        test: /\.(ttf|eot|svg)(\?v=[0-9].[0-9].[0-9])?$/, use: {
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]',
+            esModule: false
+          }
+        }
+      },
+      {
+        test: /\.(png|jpg|gif)$/, use: {
+          loader: 'url-loader',
+          options: {
+            name: '[path][name].[ext]',
+            limit: 8192,
+            esModule: false
+          }
+        }
+      },
       {
         test: /\.jsx?$/,
         exclude: os.platform() === 'win32' ? /node_modules\\(?!(qwc2)\\).*/ : /node_modules\/(?!(qwc2)\/).*/,
@@ -80,12 +90,24 @@ module.exports = {
       },
       {
         test: /\.mjs$/,
-        type: 'javascript/auto',
+        type: 'javascript/auto'
+    },
+    {
+        test: /\.js$/,
+        enforce: "pre",
+        use: ["source-map-loader"]
       }
     ]
   },
   devServer: {
     hot: true,
-    contentBase: './'
+    contentBase: './',
+    publicPath: '/dist'
+  },
+  optimization: {
+    minimize: isProd,
+    minimizer: [
+      new TerserPlugin({parallel: true})
+    ]
   }
 };
